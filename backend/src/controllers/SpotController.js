@@ -2,6 +2,18 @@ const Spot = require('../models/Spot')
 const User = require('../models/User')
 
 module.exports = {
+    // retorna um listagem de sessões (GET)
+    async index(req, res) {
+        // recupera o valor passado na url
+        const {tech} = req.query;
+
+        // cria um filtro por tecnologia
+        const spots = await Spot.find({techs : tech});
+
+        return res.json(spots);
+    },
+
+    // cria uma sessão (POST)
     async store(req, res){
         const {filename} = req.file;
         const {company, techs, price} = req.body; 
