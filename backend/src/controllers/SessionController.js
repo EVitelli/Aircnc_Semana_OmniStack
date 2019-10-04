@@ -13,10 +13,15 @@ module.exports = {
         const { email } = req.body;
 
         // como algumas instruções podem demorar, o js tem o conceito de assincronismo. o await aguarda um instrução ser executada e continua a execução
-        const user = await User.create({email});
+        // const user = await User.create({email});
 
+        // verifica se o usuário já existe no banco de dados
+        // caso ele encontreum usuário no banco com o email passado ele retornará este usuário
+        let user = await User.findOne({email})
+        if(!user){
+            // Adiciona um usuário no banco de dados
+            user - await User.create({email})
+        }
         return res.json(user)
     }
 };
-
-// parou no vídeo 1, 50:18
