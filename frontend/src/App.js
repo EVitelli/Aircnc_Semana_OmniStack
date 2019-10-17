@@ -1,24 +1,21 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import logo from './assets/logo.svg'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    // Devido a palavra class ser reservado do HTML, em React se usa classname para dizer a qual classe o componente se refere
+    <div className="container">
+      {/* Alt = texto alternativo */}
+      <img src={logo} alt="Aircnc"/>
+      <div className="content">
+        <p>Ofereça <strong>spots</strong> para programadores e encontre <strong>talentos</strong> para sua empresa</p>
+        <form>
+          <label htmlFor="email">E-mail *</label>
+          <input type="text" id="email" placeholder="Seu melhor e-mail"/>
+          <button type="submit" className="btn">Entrar</button>
+        </form>
+      </div>
     </div>
   );
 }
