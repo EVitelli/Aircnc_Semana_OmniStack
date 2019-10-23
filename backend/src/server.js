@@ -1,6 +1,7 @@
 // importa os pacotes
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors')
 
 // Importa os arquivos
 const routes = require('./routes')
@@ -13,6 +14,9 @@ mongoose.connect('mongodb+srv://omnistack:omnistack@omnistack-dv2mw.mongodb.net/
     useNewUrlParser: true,
     useUnifiedTopology: true,
 });
+
+// Cross-Origin Resource Sharing - permite que sua api seja acessada de outra origem
+app.use(cors());
 
 // Informa que a aplicação trabalha com dados no formato JSON
 app.use(express.json())

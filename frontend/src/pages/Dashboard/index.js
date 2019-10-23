@@ -1,0 +1,6 @@
+import React from 'react';
+
+export default function Dashboard() {
+    return <h1>DashBoard</h1>
+    // parou em 57 min.
+}
