@@ -2,6 +2,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors')
+const path = require('path')
 
 // Importa os arquivos
 const routes = require('./routes')
@@ -20,6 +21,9 @@ app.use(cors());
 
 // Informa que a aplicação trabalha com dados no formato JSON
 app.use(express.json())
+
+// Cria uma rota que retorna a imagem
+app.use('/files', express.static(path.resolve(__dirname, '..', 'uploads')))
 
 // deve ser passado depois do express.json
 app.use(routes);

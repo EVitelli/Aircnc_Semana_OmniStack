@@ -1,16 +1,26 @@
 const mongoose = require('mongoose');
 
-// Estrutuara do banco de dados
-const UserSchema = new mongoose.Schema({
+// Estrutura do banco de dados
+const SpotSchema = new mongoose.Schema({
     thumbnail: String,
     company: String,
     price: Number,
     techs: [String],
     user: {
-        // sala o id do usuário que criou o spot.
+        // salva o id do usuário que criou o spot.
         type: mongoose.Schema.Types.ObjectId,
-        ref:  'User',
-    },
+        ref: 'User'
+    }
+}, {
+    toJSON: {
+        // Toda vez que o spot for convertido em JSON, adiciona os virtuals a resposta
+        virtuals: true,
+    }
+});
+
+// Cria um campo que será computado somente pelo JS.
+SpotSchema.virtual('thumbnail_url').get(function() {
+    return `http://localhost:3333/files/${this.thumbnail}`
 })
 
-module.exports = mongoose.model('Spot', UserSchema);
+module.exports = mongoose.model('Spot', SpotSchema);

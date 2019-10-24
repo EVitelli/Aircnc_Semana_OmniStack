@@ -31,7 +31,7 @@ module.exports = {
 
         const spot = await Spot.create({
             user: user_id,
-            thumnail: filename,
+            thumbnail: filename,
             company,
             techs: techs.split(',').map(tech => tech.trim()),
             price,
